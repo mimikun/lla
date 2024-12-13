@@ -125,6 +125,7 @@ fn main() -> Result<()> {
             plugin_manager.perform_plugin_action(&plugin_name, &action, &action_args)
         }
         Some(Command::Clean) => unreachable!(),
+        Some(Command::Completion)
         None => list_directory(&args, &mut plugin_manager, config_error),
     }
 }

@@ -41,3 +41,5 @@ prost = "0.12"
 bytes = "1.5"
 regex.workspace = true
 glob.workspace = true
+clap_complete.workspace = true
+clap_complete_command.workspace = true

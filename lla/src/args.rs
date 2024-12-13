@@ -36,6 +36,7 @@ pub enum Command {
     Update(Option<String>),
     Clean,
     Shortcut(ShortcutAction),
+    Completion,
 }
 
 pub enum InstallSource {
@@ -330,6 +331,9 @@ impl Args {
                     )
                     .subcommand(SubCommand::with_name("list").about("List all shortcuts")),
             )
+            .subcommand(
+                SubCommand::with_name("completion").about("Generate shell completion"),
+            )
             .get_matches();
 
         Self::from_matches(&matches, config)
@@ -397,6 +401,8 @@ impl Args {
             Some(Command::Update(
                 update_matches.value_of("name").map(String::from),
             ))
+        } else if matches.subcommand_matches("completion").is_some() {
+            Some(Command::Completion)
         } else {
             None
         };
